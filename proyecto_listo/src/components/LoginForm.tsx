@@ -18,13 +18,11 @@ export default function LoginForm() {
                 username,
                 password,
             });
-            const { token } = response.data;
+            const { token, userId, role } = response.data; // Asegúrate de que la API devuelva estos datos
 
-            
-            const role = "client"; // Asigna el rol adecuado
-
-            auth.login(token, role);
-            navigate("/dashboard");
+            // Llama a login con los tres parámetros necesarios
+            auth.login(token, userId, role);
+            navigate("/dashboard"); // Redirige al usuario después de iniciar sesión
         } catch (error) {
             setError("Credenciales inválidas");
         }
@@ -77,5 +75,3 @@ export default function LoginForm() {
         </div>
     );
 }
-
-

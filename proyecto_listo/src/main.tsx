@@ -9,11 +9,17 @@ import Dashboard from './pages/Dashboard';
 import AdminDashboard from './pages/AdminDashboard';
 import ProtectedRoute from './routes/ProtectedRoute';
 import { AuthProvider } from './auth/AuthProvider';
+import Unauthorized from './pages/Unauthorized';
+import ProductDetail from './pages/ProductDetail';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <LoginPage />,
+  },
+  {
+    path: "/unauthorized",
+    element: <Unauthorized />,
   },
   {
     path: "/register",
@@ -25,6 +31,10 @@ const router = createBrowserRouter([
       {
         path: "/dashboard",
         element: <Dashboard />,
+      },
+      {
+        path: "/product/:id",
+        element: <ProductDetail />,
       },
       {
         element: <ProtectedRoute requiredRole="admin" />, // Ruta protegida para administradores
